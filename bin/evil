@@ -1,0 +1,28 @@
+#!/usr/bin/env ruby
+
+require 'rubygems'
+require 'clip'
+require 'evil'
+
+options = Clip do |p|
+end
+
+command = options.remainder.first
+
+case command
+when "init"
+  path = options.remainder[1]
+  Evil::Setup::Generator.new(path).generate!
+when "whitelist"
+  pattern = options.remainder[1]
+  path = options.remainder[2]
+  Evil::Setup::DbTool.new(path || Dir.pwd).whitelist pattern
+when 'unwhitelist'
+  pattern = options.remainder[1]
+  path = options.remainder[2]
+  Evil::Setup::DbTool.new(path || Dir.pwd).remove_from_whitelist pattern
+else
+  puts "Command not recognised...either init, whitelist or unwhitelist"
+end
+
+
