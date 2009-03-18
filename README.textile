@@ -6,12 +6,10 @@ Evil is going to be a quick and easy tool for bringing together data from all ov
 
 To create an Evil site:
 
-<pre><code>
-sudo gem install evil
+<pre><code>sudo gem install evil
 
 evil init {your_app_root}
-evil whitelist {your_openid}
-</pre></code>
+evil whitelist {your_openid}</pre></code>
 
 Then point Passenger at it, send it up to Heruko or run it on your grandad's ZX Spectrum then go to /admin and get going.
 
