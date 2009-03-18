@@ -7,4 +7,5 @@ Echoe.new("evil") do |p|
   p.url = "http://www.evilmashups.com"
   p.runtime_dependencies = ["sinatra", "activerecord",
                             "sqlite3-ruby", "clip", "haml"]
+  p.retain_gemspec = true
 end
