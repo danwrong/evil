@@ -1,0 +1,22 @@
+h1. EVIL
+
+Author: Dan Webb (dan@danwebb.net)
+
+Evil is going to be a quick and easy tool for bringing together data from all over the web into a cunning little website.  It's going to be easy to set up, easy to extend with plugins using any web API and be a good citzen in the Ruby web dev world by being a standard Rack app that you can deploy with Passenger, on Heroku or whatever you feel like. Hopefully it'll be mountable as part of a Rails or Merb app.
+
+To create an Evil site:
+
+<pre><code>
+sudo gem install evil
+
+evil init {your_app_root}
+evil whitelist {your_openid}
+</pre></code>
+
+Then point Passenger at it, send it up to Heruko or run it on your grandad's ZX Spectrum then go to /admin and get going.
+
+h2. Planned features
+
+  * Caching via Rack::Cache
+  * Plugin architecture that makes it easy to interact with web APIs (probably based on HTTParty)
+  * Simple OpenID whitelist for access to the admin interface
