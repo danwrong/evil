@@ -1,7 +1,13 @@
 !!!
 %html
   %head
-    %title Evil
+    %title Evil Admin
+    %link{ :rel => 'stylesheet', :href => '/stylesheets/evil.css', :type => 'text/css' }
   %body
-    = yield
+    #page
+      #banner
+        %h1 EVIL
+        #content
+          = yield
+    %script{ :type => 'text/javascript', :src => '/javascripts/evil.js' }
       

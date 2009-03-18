@@ -5,7 +5,7 @@ configure do
   Sinatra.register Evil::Models
   
   set :sessions => true,
-      :static   => File.join(Evil.app_root, 'public'),
+      :public   => File.join(Evil.app_root, 'public'),
       :views    => File.join(Evil.gem_root, 'views'),
       :haml     => { :format => :html5 }
       

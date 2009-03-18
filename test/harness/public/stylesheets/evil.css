@@ -8,7 +8,6 @@ body {
 #page {
   width: 60%;
   margin: 3em auto;
-  text-align: left;
   background: #333;
 }
 
@@ -20,5 +19,6 @@ body {
   margin: 0.5em;
   padding: 0.5em;
   background: #111;
+  text-align: left;
 }
 

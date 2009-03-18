@@ -3,6 +3,7 @@ assets/evil.css
 assets/evil.js
 bin/evil
 CHANGELOG
+evil.gemspec
 lib/evil/application.rb
 lib/evil/models/config_pair.rb
 lib/evil/models/plugin.rb
@@ -13,10 +14,14 @@ lib/evil/setup/db_tool.rb
 lib/evil/setup/generator.rb
 lib/evil/setup/migration.rb
 lib/evil.rb
+LICENSE
+Manifest
 Rakefile
+README.textile
 test/harness/config.ru
 test/harness/evil.db
 test/harness/public/javascripts/evil.js
 test/harness/public/stylesheets/evil.css
 test/harness/tmp/restart.txt
-Manifest
+views/index.haml
+views/layout.haml
