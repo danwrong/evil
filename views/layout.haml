@@ -9,5 +9,8 @@
         %h1 EVIL
         #content
           = yield
+        #footer
+          %form{ :method => 'post', :action => '/openid_logout' }
+            %input{ :type => 'submit', :value => 'Log out' }
     %script{ :type => 'text/javascript', :src => '/javascripts/evil.js' }
       

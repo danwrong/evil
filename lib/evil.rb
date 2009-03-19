@@ -5,7 +5,7 @@ module Evil
     autoload :Migration, 'evil/setup/migration'
   end
   
-  autoload :Application, 'evil/application'
+  autoload :OpenID, 'evil/open_id'
   
   class << self
     attr_accessor :gem_root, :app_root
