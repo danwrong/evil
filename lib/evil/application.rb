@@ -25,7 +25,7 @@ before do
   end
 end
 
-get '/openid_login' do
+get '/openid/login' do
   openid_authenticate do |result, identity_url|
     if result == :successful
       session[:identity_url] = identity_url
@@ -37,7 +37,7 @@ get '/openid_login' do
   end
 end
 
-post '/openid_logout' do
+post '/openid/logout' do
   session[:identity_url] = nil
   redirect '/admin'
 end

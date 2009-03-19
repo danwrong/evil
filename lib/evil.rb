@@ -6,6 +6,7 @@ module Evil
   end
   
   autoload :OpenID, 'evil/open_id'
+  autoload :Helpers, 'evil/helpers'
   
   class << self
     attr_accessor :gem_root, :app_root
