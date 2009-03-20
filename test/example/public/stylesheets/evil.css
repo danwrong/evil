@@ -1,14 +1,9 @@
 body {
   background: black;
   color: white;
-/*  font-family: Monaco, Courier, fixed-width;*/
   font-family: Verdana, Helvetica, Arial, sans-serif;
   padding: 0;
   margin: 0;
-}
-
-input {
-  font-family: Monaco, Courier, fixed-width;
 }
 
 h1, h2, h3, h4, h5, p {
@@ -22,7 +17,7 @@ a {
 
 #banner {
   background: #222;
-  padding: 0.5em 0.6em 0.5em 0.6em;
+  padding: 1em 1.5em;
   font-size: 70%;
   border-bottom: 5px solid #333;
 }
@@ -35,12 +30,12 @@ a {
   text-align: right;
 }
 
-#banner input.submit {
+input.submit {
   border: 1px solid;
   border-color: #666 #000 #000 #666;
   background: #444;
   color: white;
-  padding: 0.1em;
+  padding: 0.1em 0.3em;
   text-transform: uppercase;
   font-size: 0.8em;
   border-radius: 10px;
@@ -51,7 +46,7 @@ a {
 #openid_url {
   border-width: 1px;
   padding: 0.2em 0.2em 0.2em 26px;
-  background: url(http://wiki.openid.net/f/openid-16x16.gif) no-repeat #FFF 0.2em;
+  background: url(http://wiki.openid.net/f/openid-16x16.gif) no-repeat #FFF 0.3em;
   width: 12em;
 }
 
@@ -59,17 +54,21 @@ a {
   text-align: center;
 }
 
+#login img {
+  margin-right: 1em;
+}
+
 #login p {
   position: absolute;
   top: 50%;
   left: 50%;
-  margin: -4em 0 0 -11em;
-  width: 22em;
+  margin: -4em 0 0 -14em;
+  width: 26em;
   background: #222;
-  padding: 2em;
-  border-radius: 20px;
-  -moz-border-radius: 20px;
-  -webkit-border-radius: 20px;
+  padding: 1em;
+  border-radius: 30px;
+  -moz-border-radius: 30px;
+  -webkit-border-radius: 30px;
 }
 
 #login input {
@@ -81,29 +80,45 @@ a {
   border-color: #666 #000 #000 #666;
   background: #444;
   color: white;
-  padding: 0.4em;
+  padding: 0.7em;
   text-transform: uppercase;
-  font-size: 1em;
+  font-size: 0.8em;
   border-radius: 20px;
   -moz-border-radius: 20px;
   -webkit-border-radius: 20px;
+  margin-left: 1em;
 }
 
 #content {
   min-width: 600px;
-  padding: 2em 4em 8em 4em;
+  padding: 2em 1.5em 8em 1.5em;
+}
+
+.wide #content {
+  min-width: 600px;
+  padding: 2em 0 8em 1.5em;
 }
 
 #overview table {
   width: 100%;
   font-size: 80%;
   border-collapse: collapse;
-  margin: 0 0 2em 0;
+  margin: 0 1.5em 2em 0;
 }
 
 #overview table th {
   text-align: left;
   font-weight: normal;
+}
+
+#overview table tr.title {
+  background: #000;
+  border: none;
+  font-size: 1.4em;
+}
+
+#overview table tr.title th {
+  padding: 0 0 0.5em 0;
 }
 
 #overview table thead tr {
@@ -156,7 +171,7 @@ a {
 }
 
 .wide #overview table {
-  width: 47%;
+  width: 48%;
   float: left;
-  margin: 0 3% 2em 0;
+  margin: 0 2% 2em 0;
 }

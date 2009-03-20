@@ -1,4 +1,5 @@
 require 'echoe'
+require 'fileutils'
 
 Echoe.new("evil") do |p|
   p.author = "Dan Webb"
@@ -8,4 +9,16 @@ Echoe.new("evil") do |p|
   p.runtime_dependencies = ["sinatra", "activerecord",
                             "sqlite3-ruby", "clip", "haml"]
   p.retain_gemspec = true
+end
+
+desc 'Move assets from text/example to assets'
+task :sync_assets do
+  ['test/example/public/images/*', 'test/example/public/stylesheets/*', 'test/example/public/javascripts/*'].each do |glob|
+    FileUtils.cp Dir[glob], 'assets/'
+  end
+end
+
+desc 'Open a irb session with Evil loaded in the context of test/example'
+task :dev_console do
+  exec 'irb -r test/dev_env'
 end

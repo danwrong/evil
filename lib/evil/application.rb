@@ -21,7 +21,9 @@ post '/openid/logout' do
 end
 
 get '/admin' do
-  @thing = Evil::Models::Whitelist.find(:first).pattern
+  @templates = Evil::Models::Template.in_order
+  @plugins = Evil::Models::Plugin.all
+  
   haml :index
 end
       

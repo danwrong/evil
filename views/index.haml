@@ -1,35 +1,19 @@
 #overview
   %table#template-overview
     %thead
+      %tr.title
+        %th{ :colspan => 3 } Templates
       %tr
         %th URL Pattern
         %th TTL
         %th 
     %tbody
-      %tr
-        %td /thing/yeah
-        %td 1 hour
-        %td.tools
-          %a{ :href => ''} Configure
-          %a{ :href => ''} Edit
-      %tr.alt
-        %td /thing/yeah
-        %td 1 hour
-        %td.tools
-          %a{ :href => ''} Configure
-          %a{ :href => ''} Edit
-      %tr
-        %td /thing/yeah
-        %td 1 hour
-        %td.tools
-          %a{ :href => ''} Configure
-          %a{ :href => ''} Edit
-      %tr.alt
-        %td /thing/yeah
-        %td 1 hour
-        %td.tools
-          %a{ :href => ''} Configure
-          %a{ :href => ''} Edit
+      - @templates.each_with_index do |template, i|
+        %tr{ :class => ('alt' if i % 2 == 1) }
+          %td= template.route
+          %td= template.ttl
+          %td.tools
+            %a{ :href => ''} Edit
     %tfoot
       %tr
         %td{ :colspan => 3 }
@@ -37,16 +21,20 @@
       
   %table#plugin-overview
     %thead
+      %tr.title
+        %th{ :colspan => 3 } Plugins
       %tr
         %th Name
         %th Active
         %th 
     %tbody
-      %tr
-        %td Del.icio.us
-        %td YES
-        %td.tools
-          %a{ :href => ''} Edit
+      - @plugins.each_with_index do |plugin, i|
+        %tr{ :class => ('alt' if i % 2 == 1) }
+          %td= plugin.name
+          %td= (plugin.enabled? ? 'Yes' : 'No')
+          %td.tools
+            %a{ :href => ''} Configure
+            %a{ :href => ''} Edit
     %tfoot
       %tr
         %td{ :colspan => 3 }
