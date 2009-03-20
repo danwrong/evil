@@ -85,7 +85,11 @@ module Evil
       end
 
       def openid_trust_root
-        @openid_trust_root ||= [request.scheme, '://', request.host, (":#{request.port}" if request.port), "/"].compact.join
+        @openid_trust_root ||= [
+          request.scheme, '://', 
+          request.host, 
+          (":#{request.port}" if request.port), "/"
+        ].compact.join
       end
 
       def openid_return_to

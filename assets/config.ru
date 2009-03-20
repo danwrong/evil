@@ -5,4 +5,5 @@ Evil.app_root = File.expand_path(File.dirname(__FILE__))
 
 require 'evil/application'
 
+use Rack::Session::Cookie, :secret => '__SECRET__', :key => '_evil'
 run Sinatra::Application
