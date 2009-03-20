@@ -9,7 +9,7 @@ end
 require_whitelisted_openid(/^\/admin/)
 
 get '/openid/login' do
-  attempt_openid_authentication do
+  attempt_openid_authentication do |identity_url|
     session[:identity_url] = identity_url
     redirect session[:destination_url]
   end

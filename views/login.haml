@@ -1,5 +1,4 @@
-%h1 
-  Login
-  %form{ :action => '/openid/login' }
-    %input{ :name => 'openid_url' }
-    %input{ :type => 'submit', :value => 'Login' }
+%form{ :action => '/openid/login', :id => 'login' }
+  %p
+    %input#openid_url{ :name => 'openid_url' }
+    %input.submit{ :type => 'submit', :value => 'Login' }

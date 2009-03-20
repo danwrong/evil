@@ -1,5 +1,54 @@
-%h1 Hello
-%p
-  Check it man
-  = @thing
+#overview
+  %table#template-overview
+    %thead
+      %tr
+        %th URL Pattern
+        %th TTL
+        %th 
+    %tbody
+      %tr
+        %td /thing/yeah
+        %td 1 hour
+        %td.tools
+          %a{ :href => ''} Configure
+          %a{ :href => ''} Edit
+      %tr.alt
+        %td /thing/yeah
+        %td 1 hour
+        %td.tools
+          %a{ :href => ''} Configure
+          %a{ :href => ''} Edit
+      %tr
+        %td /thing/yeah
+        %td 1 hour
+        %td.tools
+          %a{ :href => ''} Configure
+          %a{ :href => ''} Edit
+      %tr.alt
+        %td /thing/yeah
+        %td 1 hour
+        %td.tools
+          %a{ :href => ''} Configure
+          %a{ :href => ''} Edit
+    %tfoot
+      %tr
+        %td{ :colspan => 3 }
+          %a{ :href => '' } Add Template...
+      
+  %table#plugin-overview
+    %thead
+      %tr
+        %th Name
+        %th Active
+        %th 
+    %tbody
+      %tr
+        %td Del.icio.us
+        %td YES
+        %td.tools
+          %a{ :href => ''} Edit
+    %tfoot
+      %tr
+        %td{ :colspan => 3 }
+          %a{ :href => '' } Add Plugin...
   

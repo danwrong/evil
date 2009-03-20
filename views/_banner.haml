@@ -1,0 +1,7 @@
+- if session[:identity_url]
+  #banner
+    %img#logo{ :src => '/images/logo.png', :alt => 'Evil' } 
+    %form{ :method => 'post', :action => '/openid/logout', :id => 'logout' }
+      Logged in as 
+      %em= session[:identity_url]
+      %input.submit{ :type => 'submit', :value => 'Log out' }

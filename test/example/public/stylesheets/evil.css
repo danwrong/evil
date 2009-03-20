@@ -1,24 +1,162 @@
 body {
   background: black;
   color: white;
-  font-family: Monaco, Courier, fixed-width;
-  text-align: center;
+/*  font-family: Monaco, Courier, fixed-width;*/
+  font-family: Verdana, Helvetica, Arial, sans-serif;
+  padding: 0;
+  margin: 0;
 }
 
-#page {
-  width: 60%;
-  margin: 3em auto;
-  background: #333;
+input {
+  font-family: Monaco, Courier, fixed-width;
+}
+
+h1, h2, h3, h4, h5, p {
+  margin: 0;
+  font-size: 1em;
+}
+
+a {
+  color: red;
 }
 
 #banner {
-  padding: 0.2em 1em;
+  background: #222;
+  padding: 0.5em 0.6em 0.5em 0.6em;
+  font-size: 70%;
+  border-bottom: 5px solid #333;
+}
+
+#banner #logo {
+  float: left;
+}
+
+#banner form {
+  text-align: right;
+}
+
+#banner input.submit {
+  border: 1px solid;
+  border-color: #666 #000 #000 #666;
+  background: #444;
+  color: white;
+  padding: 0.1em;
+  text-transform: uppercase;
+  font-size: 0.8em;
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+}
+
+#openid_url {
+  border-width: 1px;
+  padding: 0.2em 0.2em 0.2em 26px;
+  background: url(http://wiki.openid.net/f/openid-16x16.gif) no-repeat #FFF 0.2em;
+  width: 12em;
+}
+
+#login {
+  text-align: center;
+}
+
+#login p {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -4em 0 0 -11em;
+  width: 22em;
+  background: #222;
+  padding: 2em;
+  border-radius: 20px;
+  -moz-border-radius: 20px;
+  -webkit-border-radius: 20px;
+}
+
+#login input {
+  font-size: 1.2em;
+}
+
+#login input.submit {
+  border: 1px solid;
+  border-color: #666 #000 #000 #666;
+  background: #444;
+  color: white;
+  padding: 0.4em;
+  text-transform: uppercase;
+  font-size: 1em;
+  border-radius: 20px;
+  -moz-border-radius: 20px;
+  -webkit-border-radius: 20px;
 }
 
 #content {
-  margin: 0.5em;
-  padding: 0.5em;
-  background: #111;
-  text-align: left;
+  min-width: 600px;
+  padding: 2em 4em 8em 4em;
 }
 
+#overview table {
+  width: 100%;
+  font-size: 80%;
+  border-collapse: collapse;
+  margin: 0 0 2em 0;
+}
+
+#overview table th {
+  text-align: left;
+  font-weight: normal;
+}
+
+#overview table thead tr {
+  background: #666;
+  border: 1px solid #555;
+  border-width: 1px 0;
+}
+
+#overview table th, #overview table td {
+  padding: 0.5em 0.6em;
+}
+
+#overview table tr.alt {
+  background: #222;
+}
+
+#overview table td.tools {
+  text-align: right;
+}
+
+#overview td.tools a {
+  border: 1px solid;
+  border-color: #0040FF #002697 #002697 #0040FF;
+  background: #0036F1;
+  color: white;
+  padding: 0.1em 0.5em;
+  font-size: 0.8em;
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  text-decoration: none;
+}
+
+#overview tfoot td {
+  text-align: right;
+  padding: 1em 0.6em;
+}
+
+#overview tfoot a {
+  border: 1px solid;
+  border-color: #5CDD24 #24570E #24570E #5CDD24;
+  background: #00B710;
+  color: white;
+  padding: 0.1em 0.5em;
+  font-size: 0.8em;
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  text-decoration: none;
+}
+
+.wide #overview table {
+  width: 47%;
+  float: left;
+  margin: 0 3% 2em 0;
+}

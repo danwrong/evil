@@ -20,6 +20,8 @@ module Evil
       ASSETS = [
         ['evil.css', 'public/stylesheets/evil.css'],
         ['evil.js', 'public/javascripts/evil.js'],
+        ['evil-lib.js', 'public/javascripts/evil-lib.js'],
+        ['logo.png', 'public/javascripts/logo.png'],
         ['config.ru', 'config.ru']
       ]
 

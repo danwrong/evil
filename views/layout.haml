@@ -4,13 +4,10 @@
     %title Evil Admin
     %link{ :rel => 'stylesheet', :href => '/stylesheets/evil.css', :type => 'text/css' }
   %body
-    #page
-      #banner
-        %h1 EVIL
-        #content
-          = yield
-        #footer
-          %form{ :method => 'post', :action => '/openid/logout' }
-            %input{ :type => 'submit', :value => 'Log out' }
+    = partial(:banner)
+    #content
+      = yield
+    %script{ :type => 'text/javascript', :src => 'http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js' }
+    %script{ :type => 'text/javascript', :src => '/javascripts/evil-lib.js' }
     %script{ :type => 'text/javascript', :src => '/javascripts/evil.js' }
       
