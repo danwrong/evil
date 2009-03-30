@@ -58,7 +58,7 @@ class TagTest < Test::Unit::TestCase
       assert_equal '0', template.render
     end
     
-    should 'should be different value of i for each repetition of body' do
+    should 'be different value of i for each repetition of body' do
       template = Liquid::Template.parse('{% test times: 10 %}{{ i }}{% endtest %}')
       
       assert_equal '0123456789', template.render
@@ -85,10 +85,24 @@ class TagTest < Test::Unit::TestCase
       assert_equal '44', template.render
     end
     
-    should 'should be able to use vars from outer tag in inner tag' do
+    should 'be able to use vars from outer tag in inner tag' do
       template = Liquid::Template.parse("{% test times: 2 %}{% test2 a: i %}{% endtest2 %}{% endtest %}")
       
       assert_equal '01', template.render
+    end
+  end
+  
+  context 'with a custom tag with more than one parameter defined' do
+    setup do
+      Liquid::Template.register_tag('test', Evil::Plugin::Tag.from { |params|
+        [params[:a], params[:b]].join('|')
+      })
+    end
+    
+    should 'output both parameters' do
+      template = Liquid::Template.parse("{% test a: 'g', b: 'a' %}")
+      
+      assert_equal 'g|a', template.render
     end
   end
 end
