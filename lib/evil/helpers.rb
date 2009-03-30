@@ -2,6 +2,10 @@ module Evil
   module Helpers
     include Evil::Models
     
+    def serve(template)
+      haml template.source, :layout => false
+    end
+    
     def partial(template, options={})
       haml("_#{template}".to_sym, options.merge( :layout => false ))
     end

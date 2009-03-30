@@ -9,6 +9,11 @@ module Evil
   autoload :Helpers, 'evil/helpers'
   autoload :Extensions, 'evil/extensions'
   
+  module Plugin
+    autoload :Base, 'evil/plugin/base'
+    autoload :Tag, 'evil/plugin/tag'
+  end
+  
   class << self
     attr_accessor :gem_root, :app_root
   end

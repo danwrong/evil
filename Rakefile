@@ -6,14 +6,16 @@ Echoe.new("evil") do |p|
   p.email = 'dan@danwebb.net'
   p.summary = "A simple framework for creating sites from 3rd party data and services"
   p.url = "http://www.evilmashups.com"
-  p.runtime_dependencies = ["sinatra", "activerecord",
-                            "sqlite3-ruby", "clip", "haml"]
+  p.runtime_dependencies = ["sinatra >= 0.9.0", "activerecord >= 2.3.2",
+                            "sqlite3-ruby >= 1.2.0", "clip >= 1.0.0", 
+                            "haml >= 2.0.0", "liquid >= 1.9.0"]
   p.retain_gemspec = true
 end
 
 desc 'Move assets from text/example to assets'
 task :sync_assets do
-  ['test/example/public/images/*', 'test/example/public/stylesheets/*', 'test/example/public/javascripts/*'].each do |glob|
+  ['test/example/public/images/*', 'test/example/public/stylesheets/*', 
+   'test/example/public/javascripts/*'].each do |glob|
     FileUtils.cp Dir[glob], 'assets/'
   end
 end

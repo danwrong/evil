@@ -29,5 +29,17 @@ module Evil
       end
     end
     
+    def load_template_routes
+      Evil::Models::Template.in_order.each do |template|
+        get template.route, &proc_for(template)
+      end
+    end
+    
+    protected
+    
+    def proc_for(template)
+      lambda { serve template }
+    end
+    
   end
 end

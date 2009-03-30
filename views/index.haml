@@ -13,11 +13,11 @@
           %td= template.route
           %td= template.ttl
           %td.tools
-            %a{ :href => ''} Edit
+            %a{ :href => "/admin/templates/#{template.id}"} Edit
     %tfoot
       %tr
         %td{ :colspan => 3 }
-          %a{ :href => '' } Add Template...
+          %a{ :href => '/admin/templates/new' } Add Template...
       
   %table#plugin-overview
     %thead
@@ -38,5 +38,5 @@
     %tfoot
       %tr
         %td{ :colspan => 3 }
-          %a{ :href => '' } Add Plugin...
+          %a{ :href => '/admin/plugins/new' } Add Plugin...
   
