@@ -1,5 +1,3 @@
-require 'liquid'
-
 module Evil
   module Plugin
     

@@ -100,7 +100,7 @@ class TagTest < Test::Unit::TestCase
     end
     
     should 'output both parameters' do
-      template = Liquid::Template.parse("{% test a: 'g', b: 'a' %}")
+      template = Liquid::Template.parse("{% test a: 'g', b: 'a' %}{% endtest %}")
       
       assert_equal 'g|a', template.render
     end
