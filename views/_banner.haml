@@ -1,6 +1,7 @@
 - if session[:identity_url]
   #banner
-    %img#logo{ :src => '/images/logo.png', :alt => 'Evil' } 
+    %a{ :href => '/admin' }
+      %img#logo{ :src => '/images/logo.png', :alt => 'Evil' } 
     %form{ :method => 'post', :action => '/openid/logout', :id => 'logout' }
       Logged in as 
       %em= session[:identity_url]

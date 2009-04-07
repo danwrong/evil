@@ -2,10 +2,10 @@
   %p
     %label
       Route
-      %input{ :name => 'template[route]', :value => @template.route }
+    %input.text{ :name => 'template[route]', :value => @template.route }
   %p
     %label
       Source
-      %textarea{ :name => 'template[source]' }= @template.source
+    %textarea{ :name => 'template[source]' }= @template.source
   %p
     %input.submit{ :value => 'Save', :type => 'submit' }

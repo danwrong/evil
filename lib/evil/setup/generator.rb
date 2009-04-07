@@ -15,6 +15,7 @@ module Evil
         public/images
         public/stylesheets
         public/javascripts
+        plugins
       }
     
       ASSETS = [

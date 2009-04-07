@@ -5,6 +5,7 @@ module Evil
     include Evil::Models
     
     def serve(template)
+      content_type 'text/html', :charset => 'utf-8'
       template = Liquid::Template.parse(template.source)
       template.render 'params' => params
     end
