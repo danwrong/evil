@@ -1,0 +1,15 @@
+plugin 'Delicious' do |p|
+  p.description 'Include links from your delicious account'
+  p.base_uri 'https://api.del.icio.us/v1'
+  p.basic_auth 'danwrong', 'bloody'
+  
+  p.tag :recent do |args|
+    resp = p.get('/posts/recent', :query => args)
+    posts = resp['posts']['post'].is_a?(Hash) ?
+              [resp['posts']['post']] : resp['posts']['post']
+    
+    posts.collect do |link|
+      body :link => link
+    end
+  end
+end

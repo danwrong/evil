@@ -1,9 +1,12 @@
+require 'liquid'
+
 module Evil
   module Helpers
     include Evil::Models
     
     def serve(template)
-      haml template.source, :layout => false
+      template = Liquid::Template.parse(template.source)
+      template.render 'params' => params
     end
     
     def partial(template, options={})
