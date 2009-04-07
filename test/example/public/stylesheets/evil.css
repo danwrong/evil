@@ -198,3 +198,7 @@ form input.text, form textarea {
   font-family: Verdana, Helvetica, Arial, sans-serif;
   font-size: 1em;
 }
+
+textarea#template_source {
+  height: 500px;
+}

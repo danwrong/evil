@@ -1,11 +1,11 @@
 %form{ :action => '/admin/templates', :method => 'post' }
   %p
-    %label
+    %label{ :for => 'template_route' }
       Route
-    %input.text{ :name => 'template[route]' }
+    %input#template_route.text{ :name => 'template[route]' }
   %p
-    %label
+    %label{ :for => 'template_source' }
       Source
-    %textarea{ :name => 'template[source]' }
+    %textarea#template_route{ :name => 'template[source]' }
   %p
     %input.submit{ :value => 'Save', :type => 'submit' }
