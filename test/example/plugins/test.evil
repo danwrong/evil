@@ -1,7 +1,7 @@
 plugin 'Delicious' do |p|
   p.description 'Include links from your delicious account'
   p.base_uri 'https://api.del.icio.us/v1'
-  p.basic_auth 'danwrong', 'bloody'
+  p.basic_auth 'user', 'pass'
   
   p.tag :recent do |args|
     resp = p.get('/posts/recent', :query => args)
