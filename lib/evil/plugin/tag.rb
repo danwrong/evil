@@ -7,8 +7,7 @@ module Evil
         @options = evaluate(options, context)
         @context = context
         @tag = tag
-        @meta = class << self; self; end
-        @meta.send :define_method, :execute, &block
+        @proc = block
       end
       
       def body(locals={})
@@ -18,8 +17,12 @@ module Evil
         end
       end
       
+      def execute
+        self.instance_exec(@options, &@proc)
+      end
+      
       def to_s
-        execute(@options)
+        execute.to_s
       end
       
       private
@@ -37,6 +40,7 @@ module Evil
       
       class << self
         attr_accessor :tag_proc
+        attr_accessor :plugin
         
         def from(&block)
           tag = Class.new(self)
