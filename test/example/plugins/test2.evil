@@ -1,0 +1,11 @@
+plugin 'Twitter' do |p|
+  p.http.base_uri 'http://twitter.com'
+  
+  p.tag :user_timeline do |args|
+    resp = p.http.get("/statuses/user_timeline/#{args[:user]}.json")
+    
+    resp.collect do |status|
+      body :status => status
+    end
+  end
+end

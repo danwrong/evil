@@ -11,6 +11,8 @@ module Evil
   
   autoload :Plugin, 'evil/plugin'
   
+  autoload :Application, 'evil/application'
+  
   class << self
     attr_accessor :gem_root, :app_root
   end

@@ -4,7 +4,6 @@ require 'httparty'
 module Evil
   module Plugin  
     class Base
-      include HTTParty
       attr_reader :name, :description
       
       def initialize(name, &block)
@@ -31,28 +30,10 @@ module Evil
         Liquid::Template.register_filter(mod)
       end
       
-      def get(*args)
-        self.class.get(*args)
-      end
-      
-      def post(*args)
-        self.class.post(*args)
-      end
-      
-      def put(*args)
-        self.class.put(*args)
-      end
-      
-      def delete(*args)
-        self.class.delete(*args)
-      end
-      
-      def base_uri(*args)
-        self.class.base_uri(*args)
-      end
-      
-      def basic_auth(*args)
-        self.class.basic_auth(*args)
+      def http
+        @http ||= Module.new do
+          include HTTParty
+        end
       end
     end
     

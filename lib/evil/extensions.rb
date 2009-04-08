@@ -4,11 +4,11 @@ module Evil
   module Extensions
     
     def initialize_evil
-      Sinatra.helpers  Evil::Helpers, Evil::OpenID::Helpers
-      
       set :public   => File.join(Evil.app_root, 'public'),
           :views    => File.join(Evil.gem_root, 'views'),
-          :haml     => { :format => :html5 }
+          :haml     => { :format => :html5 },
+          :logging  => true,
+          :static   => true
 
       connect_to_database
       load_all_plugins
