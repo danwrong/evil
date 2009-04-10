@@ -4,6 +4,7 @@ module Evil
     autoload :Tag, 'evil/plugin/tag'
     autoload :Environment, 'evil/plugin/environment'
     autoload :Filesystem, 'evil/plugin/filesystem'
+    autoload :Configuration, 'evil/plugin/configuration'
     
     def self.evaluate(plugin_source)
       Environment.module_eval plugin_source

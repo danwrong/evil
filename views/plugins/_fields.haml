@@ -5,6 +5,7 @@
     - Evil::Plugin::Environment.plugins.each do |p|
       %option{ :selected => (params[:plugin] == p.name ) }= p.name
 - if @plugin
-  %p Config here...
+  - @plugin.configurator.fields.each do |field|
+    = render_config_field(field)
 %p
   %input.submit{ :value => 'Save', :type => 'submit' }

@@ -15,6 +15,10 @@ module Evil
       haml(partial_name(template), options.merge( :layout => false ))
     end
     
+    def render_config_field(field)
+      partial("plugins/fields/#{field.type}", :locals => { :field => field })
+    end
+    
     def not_authorized(message=nil)
       status 401
       halt haml(:login)

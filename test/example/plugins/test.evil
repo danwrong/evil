@@ -1,7 +1,15 @@
 plugin 'Delicious' do |p|
   p.description 'Include links from your delicious account'
   p.http.base_uri 'https://api.del.icio.us/v1'
-  p.http.basic_auth 'user', 'pass'
+  
+  p.configure do |c|
+    c.text :username
+    c.password :password
+  end
+  
+  p.setup do
+    p.http.basic_auth p.config[:username], p.config[:password]
+  end
   
   p.tag :recent do |args|
     resp = p.http.get('/posts/recent', :query => args)

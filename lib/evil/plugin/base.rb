@@ -1,10 +1,11 @@
 module Evil
   module Plugin  
     class Base
-      attr_reader :name
+      attr_reader :name, :configurator
       
       def initialize(name, &block)
         @name = name
+        @configurator = Configuration::Configurator.new
         block.call(self)
       end
 
@@ -43,7 +44,6 @@ module Evil
       end
       
       def configure
-        @configurator ||= Configuration::Configurator.new
         yield @configurator
       end
       

@@ -4,6 +4,8 @@ module Evil
       
       class ConfigField
         
+        attr_accessor :name, :type, :options
+        
         def initialize(type, name, options={})
           @type, @name, @options = type, name, options
         end
@@ -23,7 +25,7 @@ module Evil
         end
         
         def password(field, options={})
-          @fields << ConfigField.new(:text, field, options)
+          @fields << ConfigField.new(:password, field, options)
         end
         
       end
