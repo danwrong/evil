@@ -3,8 +3,11 @@ module Evil
     include Evil::Models
     
     def serve(template)
-      content_type 'text/html', :charset => 'utf-8'
+      initialize_plugins
+      
       template = Liquid::Template.parse(template.reload.source)
+      
+      content_type 'text/html', :charset => 'utf-8'
       template.render 'params' => params
     end
     
@@ -29,6 +32,12 @@ module Evil
           not_authorized
         end
       end
+    end
+    
+    protected
+    
+    def initialize_plugins
+      Plugin::Environment.plugins.each { |p| p.init }
     end
     
   end

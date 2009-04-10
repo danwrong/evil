@@ -24,14 +24,38 @@ class EvilTest < Test::Unit::TestCase
       
       end
     
-      context 'while logged in' do      
+      context 'while logged in' do 
+        setup do
+          @env = { 'rack.session' => { :identity_url => 'www.danwebb.net' } }
+        end
+             
         context 'GET /admin' do
           setup do
-            get '/admin', {}, { 'rack.session' => { :identity_url => 'www.danwebb.net' } }
+            get '/admin', {}, @env
           end
 
           should 'be successful' do
             assert response.ok?
+          end
+        end
+        
+        context 'GET /admin/templates/1 with existing template' do
+          setup do
+            get '/admin/templates/1', {}, @env
+          end
+          
+          should 'be successful' do
+            assert response.ok?
+          end
+        end
+        
+        context 'GET /admin/templates/nothinghere with non-existing template' do
+          setup do
+            get '/admin/templates/nothinghere', {}, @env
+          end
+          
+          should 'be not found' do
+            assert_equal 404, response.status
           end
         end
       end

@@ -1,10 +1,10 @@
 $:.unshift(File.join(File.dirname(__FILE__), '../lib'))
-
-require 'evil'
 require 'rubygems'
+require 'evil'
 require 'test/unit'
 require 'shoulda'
 require 'sinatra/test'
+require 'mocha'
 
 require 'redgreen' rescue nil
 
