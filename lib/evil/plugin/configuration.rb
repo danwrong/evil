@@ -31,7 +31,7 @@ module Evil
       class Config
       
         def initialize(plugin)
-          pairs = Evil::Models::ConfigPair.find_all_by_plugin_name(plugin)
+          pairs = Evil::Models::ConfigPair.find_all_by_plugin(plugin.name)
           
           if pairs
             @values = pairs.inject(Hash.new('')) do |m, pair|

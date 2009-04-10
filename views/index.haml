@@ -24,21 +24,18 @@
   %table#plugin-overview
     %thead
       %tr.title
-        %th{ :colspan => 3 } Plugins
+        %th{ :colspan => 3 } Plugin Configuration
       %tr
         %th Name
-        %th Active
         %th 
     %tbody
       - @plugins.each_with_index do |plugin, i|
         %tr{ :class => ('alt' if i % 2 == 1) }
           %td= plugin.name
-          %td= (plugin.enabled? ? 'Yes' : 'No')
           %td.tools
-            %a{ :href => ''} Configure
             %a{ :href => ''} Edit
     %tfoot
       %tr
         %td{ :colspan => 3 }
-          %a{ :href => '/admin/plugins/new' } Add Plugin...
+          %a{ :href => '/admin/plugins/new' } Add Configuration...
   

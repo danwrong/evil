@@ -28,6 +28,10 @@ module Evil
     end
     
     def load_all_plugins
+      Dir[File.join(Evil.gem_root, 'lib', 'plugin/builtin', '*.rb')].each do |plugin|
+        Evil::Plugin.from_file(plugin)
+      end
+      
       Dir[File.join(Evil.app_root, 'plugins', '*.evil')].each do |plugin|
         Evil::Plugin.from_file(plugin)
       end

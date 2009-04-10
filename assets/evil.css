@@ -199,6 +199,20 @@ form input.text, form textarea {
   font-size: 1em;
 }
 
+form div.errors {
+  border: 1px solid red;
+  font-size: 0.8em;
+  font-style: italic;
+  padding: .8em;
+  color: red;
+  background: #111;
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+}
+
 textarea#template_source {
   height: 500px;
+  font-family: Monaco, Courier, fixed;
+  font-size: 0.8em;
 }

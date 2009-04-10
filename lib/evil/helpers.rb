@@ -12,7 +12,7 @@ module Evil
     end
     
     def partial(template, options={})
-      haml("_#{template}".to_sym, options.merge( :layout => false ))
+      haml(partial_name(template), options.merge( :layout => false ))
     end
     
     def not_authorized(message=nil)
@@ -40,5 +40,10 @@ module Evil
       Plugin::Environment.plugins.each { |p| p.init }
     end
     
+    def partial_name(template_path)
+      parts = template_path.to_s.split('/')
+      parts[-1] = "_#{parts.last}"
+      parts.join('/').to_sym
+    end
   end
 end

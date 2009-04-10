@@ -1,0 +1,9 @@
+- unless model.errors.empty?
+  %div.errors 
+    %h3 
+      There were problems saving this 
+      = "#{name}:"
+    %ul
+      -  model.errors.full_messages.each do |error|
+        %li= error
+    

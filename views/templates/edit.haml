@@ -1,15 +1,3 @@
 %form{ :action => "/admin/templates/#{@template.id}", :method => 'post' }
-  %p
-    %label{ :for => 'template_title' }
-      Title *
-    %input#template_title.text{ :name => 'template[title]', :value => @template.title }
-  %p
-    %label{ :for => 'template_route' }
-      Route
-    %input#template_route.text{ :name => 'template[route]', :value => @template.route }
-  %p
-    %label{ :for => 'template_source' }
-      Source *
-    %textarea#template_source{ :name => 'template[source]' }= @template.source
-  %p
-    %input.submit{ :value => 'Save', :type => 'submit' }
+  = partial(:errors, :locals => { :model => @template, :name => 'template' })
+  = partial(:"templates/fields")

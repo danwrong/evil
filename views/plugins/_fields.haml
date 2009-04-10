@@ -1,0 +1,10 @@
+%p
+  %label{ :for => 'plugin_name' }
+    Plugin
+  %select#plugin_name.text{ :name => 'plugin' }
+    - Evil::Plugin::Environment.plugins.each do |p|
+      %option{ :selected => (params[:plugin] == p.name ) }= p.name
+- if @plugin
+  %p Config here...
+%p
+  %input.submit{ :value => 'Save', :type => 'submit' }

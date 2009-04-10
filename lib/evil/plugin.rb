@@ -12,5 +12,9 @@ module Evil
     def self.from_file(file)
       evaluate(File.read(file))
     end
+    
+    def self.find_plugin(name)
+      Environment.plugins.find { |p| p.name == name }
+    end
   end
 end

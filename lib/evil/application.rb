@@ -64,6 +64,22 @@ module Evil
         haml :"templates/edit"
       end
     end
+    
+    get '/admin/plugins/new' do
+      @plugin = Evil::Plugin.find_plugin(params[:plugin]) if params[:plugin]
+      
+      haml :"plugins/new"
+    end
+    
+    post '/admin/plugins' do
+      @plugin = Evil::Plugin.find_plugin(params[:plugin]) if params[:plugin]
+
+      if params[:config_pairs]
+        # save em
+      else
+        haml :"plugins/new"
+      end
+    end
   end
 end
       
