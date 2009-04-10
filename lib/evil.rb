@@ -1,3 +1,7 @@
+require 'liquid'
+require 'liquid_inheritance'
+require 'httparty'
+
 module Evil
   module Setup
     autoload :DbTool, 'evil/setup/db_tool'

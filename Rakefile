@@ -8,8 +8,11 @@ Echoe.new("evil") do |p|
   p.url = "http://www.evilmashups.com"
   p.runtime_dependencies = ["sinatra >= 0.9.0", "activerecord >= 2.3.2",
                             "sqlite3-ruby >= 1.2.0", "clip >= 1.0.0", 
-                            "haml >= 2.0.0", "liquid >= 1.9.0"]
+                            "haml >= 2.0.0", "liquid >= 1.9.0", "liquid-inheritance >= 0.1"]
+                            
+  p.development_dependencies = ['shoulda']
   p.retain_gemspec = true
+  p.ignore_pattern = ['test/example', 'test/example/**/*']
 end
 
 desc 'Move assets from text/example to assets'

@@ -3,6 +3,7 @@ module Evil
     autoload :Base, 'evil/plugin/base'
     autoload :Tag, 'evil/plugin/tag'
     autoload :Environment, 'evil/plugin/environment'
+    autoload :Filesystem, 'evil/plugin/filesystem'
     
     def self.evaluate(plugin_source)
       Environment.module_eval plugin_source

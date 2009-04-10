@@ -9,6 +9,8 @@ module Evil
           :haml     => { :format => :html5 },
           :logging  => true,
           :static   => true
+          
+      Liquid::Template.file_system = Evil::Plugin::Filesystem.new
 
       connect_to_database
       load_all_plugins
@@ -21,7 +23,7 @@ module Evil
     
     def load_template_routes
       Evil::Models::Template.in_order.each do |template|
-        get template.route, &proc_for(template)
+        get(template.route, &proc_for(template)) unless template.route.nil? || template.route.empty?
       end
     end
     

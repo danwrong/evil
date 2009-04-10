@@ -1,11 +1,17 @@
+%p.errors= @template.errors.full_messages
+
 %form{ :action => '/admin/templates', :method => 'post' }
+  %p
+    %label{ :for => 'template_title' }
+      Title *
+    %input#template_title.text{ :name => 'template[title]' }
   %p
     %label{ :for => 'template_route' }
       Route
     %input#template_route.text{ :name => 'template[route]' }
   %p
     %label{ :for => 'template_source' }
-      Source
+      Source *
     %textarea#template_route{ :name => 'template[source]' }
   %p
     %input.submit{ :value => 'Save', :type => 'submit' }

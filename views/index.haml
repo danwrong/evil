@@ -4,19 +4,21 @@
       %tr.title
         %th{ :colspan => 3 } Templates
       %tr
+        %th Name
         %th URL Pattern
         %th TTL
         %th 
     %tbody
       - @templates.each_with_index do |template, i|
         %tr{ :class => ('alt' if i % 2 == 1) }
+          %td= template.title
           %td= template.route
           %td= template.ttl
           %td.tools
             %a{ :href => "/admin/templates/#{template.id}"} Edit
     %tfoot
       %tr
-        %td{ :colspan => 3 }
+        %td{ :colspan => 4 }
           %a{ :href => '/admin/templates/new' } Add Template...
       
   %table#plugin-overview

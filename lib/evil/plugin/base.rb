@@ -1,6 +1,3 @@
-require 'liquid'
-require 'httparty'
-
 module Evil
   module Plugin  
     class Base
