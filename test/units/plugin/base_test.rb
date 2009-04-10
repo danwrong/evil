@@ -32,9 +32,8 @@ class BaseTest < Test::Unit::TestCase
   end
   
   should 'create and register a tag instance when plugin initialize with a tag call' do
-    
-    Tag.expects(:from).returns(t = Class.new(Liquid::Tag))
-    Liquid::Template.expects(:register_tag).with(t)
+    Evil::Plugin::Tag.expects(:from).returns(t = Class.new(Liquid::Tag))
+    Liquid::Template.expects(:register_tag).with(:thing, t)
     
     Evil::Plugin::Base.new 'Test Plugin' do |p|
       p.tag :thing do 
@@ -43,4 +42,6 @@ class BaseTest < Test::Unit::TestCase
     end
     
   end
+  
+  
 end
