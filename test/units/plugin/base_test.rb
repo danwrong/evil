@@ -7,20 +7,12 @@ class BaseTest < Test::Unit::TestCase
     assert_equal 'Test Plugin', plugin.name
   end
   
-  context 'given a plugin instance' do
+  context 'given a plugin instance with a description and setup set' do
     setup do
       @setup_proc = Proc.new {}
       
       @plugin = Evil::Plugin::Base.new 'Test Plugin' do |p|
         p.description 'A plugin for testing plugins'
-
-        p.tag :thing do |args|
-          'test'
-        end
-
-        p.filter :thing do
-          'test'
-        end
         
         p.setup &@setup_proc
 
@@ -36,5 +28,19 @@ class BaseTest < Test::Unit::TestCase
       
       @plugin.init
     end
+    
+  end
+  
+  should 'create and register a tag instance when plugin initialize with a tag call' do
+    
+    Tag.expects(:from).returns(t = Class.new(Liquid::Tag))
+    Liquid::Template.expects(:register_tag).with(t)
+    
+    Evil::Plugin::Base.new 'Test Plugin' do |p|
+      p.tag :thing do 
+        'a tag'
+      end
+    end
+    
   end
 end
