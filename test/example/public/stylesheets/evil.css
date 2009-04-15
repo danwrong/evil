@@ -193,10 +193,14 @@ form p {
   margin: 1em 0;
 }
 
-form input.text, form textarea {
+form input.text, form textarea, form input.short {
   width: 100%;
   font-family: Verdana, Helvetica, Arial, sans-serif;
   font-size: 1em;
+}
+
+form input.short {
+  width: 30%;
 }
 
 form div.errors {

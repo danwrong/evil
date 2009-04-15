@@ -13,7 +13,7 @@
         %tr{ :class => ('alt' if i % 2 == 1) }
           %td= template.title
           %td= template.route
-          %td= template.ttl
+          %td= template.route.empty? ? 'N/A' : template.ttl
           %td.tools
             %a{ :href => "/admin/templates/#{template.id}"} Edit
     %tfoot

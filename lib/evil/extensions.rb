@@ -25,8 +25,13 @@ module Evil
     end
     
     def connect_to_database
-      ActiveRecord::Base.establish_connection :adapter => 'sqlite3', 
-                                              :database => File.join(Evil.app_root, 'evil.db')
+      if Evil.heroku?
+        dbconfig = YAML.load(File.read(File.join(Evil.app_root, 'config/database.yml')))
+        ActiveRecord::Base.establish_connection dbconfig['production']
+      else
+        ActiveRecord::Base.establish_connection :adapter => 'sqlite3', 
+                                                :database => File.join(Evil.app_root, 'evil.db')
+      end
     end
     
     def load_template_routes
@@ -47,7 +52,7 @@ module Evil
     
     def require_whitelisted_openid(pattern)
       before do
-        if request.path_info =~ pattern
+        if request.path_info =~ pattern && !params[:openid_url]
           unless whitelisted_openid?
             session[:destination_url] = request.url
             not_authorized

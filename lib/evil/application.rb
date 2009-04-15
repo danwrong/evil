@@ -12,14 +12,14 @@ module Evil
     require_whitelisted_openid(/^\/admin/)
     load_template_routes
 
-    get '/openid/login' do
+    get '/admin/openid/login' do
       attempt_openid_authentication do |identity_url|
         session[:identity_url] = identity_url
         redirect session[:destination_url]
       end
     end
 
-    post '/openid/logout' do
+    post '/admin/openid/logout' do
       session[:identity_url] = nil
       redirect '/admin'
     end

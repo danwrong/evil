@@ -5,10 +5,15 @@ module Evil
     def serve(template)
       initialize_plugins
       
-      template = Liquid::Template.parse(template.reload.source)
+      liquid_template = Liquid::Template.parse(template.reload.source)
       
-      content_type 'text/html', :charset => 'utf-8'
-      template.render 'params' => params
+      content_type(template.content_type || 'text/html', :charset => template.encoding || 'utf-8')
+      
+      if template.ttl
+        headers 'Cache-Control' => "public, max-age=#{template.ttl}"
+      end
+      
+      liquid_template.render 'params' => params
     end
     
     def partial(template, options={})

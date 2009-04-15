@@ -8,7 +8,7 @@ module Evil
       def create_evil_tables
         create_table :evil_templates do |t|
           t.integer :ttl, :position
-          t.string  :title, :route
+          t.string  :title, :route, :content_type, :encoding
           t.text    :source
           t.timestamps
         end unless Evil::Models::Template.table_exists? 

@@ -2,7 +2,7 @@
   #banner
     %a{ :href => '/admin' }
       %img#logo{ :src => '/images/logo.png', :alt => 'Evil' } 
-    %form{ :method => 'post', :action => '/openid/logout', :id => 'logout' }
+    %form{ :method => 'post', :action => '/admin/openid/logout', :id => 'logout' }
       Logged in as 
       %em= session[:identity_url]
       %input.submit{ :type => 'submit', :value => 'Log out' }

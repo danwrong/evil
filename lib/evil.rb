@@ -19,6 +19,10 @@ module Evil
   
   class << self
     attr_accessor :gem_root, :app_root
+    
+    def heroku?
+      Object.const_defined?(:Heroku)
+    end
   end
 end
 

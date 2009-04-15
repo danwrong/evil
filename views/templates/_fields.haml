@@ -11,4 +11,13 @@
     Source *
   %textarea#template_source{ :name => 'template[source]' }= @template.source
 %p
+  %label{ :for => 'template_ttl' }
+    Expires every (seconds)
+  %input#template_ttl.text{ :name => 'template[ttl]', :value => @template.ttl || 600 }
+%p
+  %label{ :for => 'template_content_type' }
+    Content Type
+  %input#template_content_type.short{ :name => 'template[content_type]', :value => @template.content_type || 'text/html' }
+  %input#template_encoding.short{ :name => 'template[encoding]', :value => @template.encoding || 'utf-8' }
+%p
   %input.submit{ :value => 'Save', :type => 'submit' }
