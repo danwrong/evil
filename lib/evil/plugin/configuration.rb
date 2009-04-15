@@ -51,7 +51,7 @@ module Evil
           values.each do |k, v|
             c = ConfigPair.find_or_create_by_plugin_and_key(@plugin.name, k)
             c.update_attribute :value, v
-          end
+          end if values
           
           load_config!
         end

@@ -1,11 +1,7 @@
-%p
-  %label{ :for => 'plugin_name' }
-    Plugin
-  %select#plugin_name.text{ :name => 'plugin' }
-    - Evil::Plugin::Environment.plugins.each do |p|
-      %option{ :selected => (params[:plugin] == p.name ) }= p.name
-- if @plugin
-  - @plugin.configurator.fields.each do |field|
-    = render_config_field(field)
+%h2= "Configure #{@plugin.name} Plugin" 
+
+- @plugin.configurator.fields.each do |field|
+  %input{ :type => 'hidden', :name => 'plugin', :value => @plugin.name }
+  = render_config_field(field)
 %p
   %input.submit{ :value => 'Save', :type => 'submit' }

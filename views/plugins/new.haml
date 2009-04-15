@@ -1,2 +1,6 @@
-%form{ :action => '/admin/plugins', :method => 'post' }
-  = partial(:"plugins/fields")
+%h2 Choose a plugin
+
+%ul
+  - Evil::Plugin::Environment.plugins.each do |p|
+    %li{ :selected => (params[:plugin] == p.name ) }
+      %a{ :href => "/admin/plugins/#{urlencode(p.name)}" }= p.name

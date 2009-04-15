@@ -68,19 +68,7 @@ module Evil
     end
     
     get '/admin/plugins/new' do
-      @plugin = Evil::Plugin.find_plugin(params[:plugin]) if params[:plugin]
-      
       haml :"plugins/new"
-    end
-    
-    post '/admin/plugins' do
-      @plugin = Evil::Plugin.find_plugin(params[:plugin]) if params[:plugin]
-
-      if params[:config]
-        @plugin.config.set(params[:config])
-      else
-        haml :"plugins/new"
-      end
     end
     
     get '/admin/plugins/:id' do
