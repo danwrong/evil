@@ -8,12 +8,20 @@ module Evil
           :views    => File.join(Evil.gem_root, 'views'),
           :haml     => { :format => :html5 },
           :logging  => true,
-          :static   => true
+          :static   => true,
+          :dump_errors => true
           
       Liquid::Template.file_system = Evil::Plugin::Filesystem.new
 
       connect_to_database
       load_all_plugins
+    end
+    
+    def reload!
+      @reloading = true
+      reset!
+      Kernel.load 'evil/application.rb'
+      @reloading = false
     end
     
     def connect_to_database

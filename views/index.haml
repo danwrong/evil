@@ -31,9 +31,9 @@
     %tbody
       - @plugins.each_with_index do |plugin, i|
         %tr{ :class => ('alt' if i % 2 == 1) }
-          %td= plugin.name
+          %td= plugin
           %td.tools
-            %a{ :href => ''} Edit
+            %a{ :href => "/admin/plugins/#{urlencode(plugin)}"} Edit
     %tfoot
       %tr
         %td{ :colspan => 3 }

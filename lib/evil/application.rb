@@ -26,7 +26,7 @@ module Evil
 
     get '/admin' do
       @templates = Evil::Models::Template.in_order
-      @plugins = Evil::Models::Plugin.all
+      @plugins = Evil::Models::ConfigPair.plugins
 
       haml :index
     end
@@ -41,6 +41,7 @@ module Evil
       @template = Evil::Models::Template.new params[:template]
 
       if @template.save
+        self.class.reload!
         redirect '/admin'
       else
         haml :"templates/new"
@@ -59,6 +60,7 @@ module Evil
       @template.attributes = params[:template]
 
       if @template.save
+        self.class.reload!
         redirect '/admin'
       else
         haml :"templates/edit"
@@ -74,11 +76,25 @@ module Evil
     post '/admin/plugins' do
       @plugin = Evil::Plugin.find_plugin(params[:plugin]) if params[:plugin]
 
-      if params[:config_pairs]
-        # save em
+      if params[:config]
+        @plugin.config.set(params[:config])
       else
         haml :"plugins/new"
       end
+    end
+    
+    get '/admin/plugins/:id' do
+      @plugin = Evil::Plugin.find_plugin(params[:id]) rescue not_found
+
+      haml :"plugins/edit"
+    end
+    
+    post '/admin/plugins/:id' do
+      @plugin = Evil::Plugin.find_plugin(params[:id]) rescue not_found
+      
+      @plugin.config.set(params[:config])
+      
+      redirect '/admin'
     end
   end
 end

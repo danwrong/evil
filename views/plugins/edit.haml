@@ -1,2 +1,2 @@
-%form{ :action => "/admin/plugins/#{@plugin.id}", :method => 'post' }
+%form{ :action => "/admin/plugins/#{urlencode(@plugin.name)}", :method => 'post' }
   = partial(:"plugins/fields")

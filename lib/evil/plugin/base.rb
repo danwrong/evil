@@ -48,7 +48,7 @@ module Evil
       end
       
       def config
-        @config ||= Configuration::Config.new
+        @config ||= Configuration::Config.new(self)
       end
     end
     

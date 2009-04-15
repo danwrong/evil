@@ -10,6 +10,10 @@ module Evil
           @type, @name, @options = type, name, options
         end
         
+        def label
+          options[:label] || name.to_s.capitalize
+        end
+        
       end
       
       class Configurator
@@ -31,9 +35,31 @@ module Evil
       end
       
       class Config
+        include Evil::Models
       
         def initialize(plugin)
-          pairs = Evil::Models::ConfigPair.find_all_by_plugin(plugin.name)
+          @plugin = plugin
+          
+          load_config!
+        end
+        
+        def [](val)
+          @values[val.to_sym]
+        end
+        
+        def set(values)
+          values.each do |k, v|
+            c = ConfigPair.find_or_create_by_plugin_and_key(@plugin.name, k)
+            c.update_attribute :value, v
+          end
+          
+          load_config!
+        end
+        
+        protected
+        
+        def load_config!
+          pairs = Evil::Models::ConfigPair.find_all_by_plugin(@plugin.name)
           
           if pairs
             @values = pairs.inject(Hash.new('')) do |m, pair|
@@ -42,10 +68,6 @@ module Evil
           else
             @values = Hash.new('')
           end
-        end
-        
-        def [](val)
-          @values[val.to_sym]
         end
       
       end

@@ -38,6 +38,10 @@ module Evil
       end
     end
     
+    def urlencode(str)
+      URI.escape(str)
+    end
+    
     protected
     
     def initialize_plugins
