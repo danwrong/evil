@@ -13,6 +13,7 @@ Echoe.new("evil") do |p|
                             
   p.development_dependencies = ['shoulda']
   p.retain_gemspec = true
+  p.ignore_pattern = ['test/example/**/*']
 end
 
 desc 'Move assets from text/example to assets'
