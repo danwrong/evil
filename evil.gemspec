@@ -2,11 +2,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{evil}
-  s.version = "0.1"
+  s.version = "0.1.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 1.2") if s.respond_to? :required_rubygems_version=
   s.authors = ["Dan Webb"]
-  s.date = %q{2009-04-15}
+  s.date = %q{2009-04-17}
   s.default_executable = %q{evil}
   s.description = %q{A simple framework for creating sites from 3rd party data and services}
   s.email = %q{dan@danwebb.net}
@@ -31,18 +31,20 @@ Gem::Specification.new do |s|
       s.add_runtime_dependency(%q<activerecord>, [">= 0", "= 2.3.2"])
       s.add_runtime_dependency(%q<sqlite3-ruby>, [">= 0", "= 1.2.1"])
       s.add_runtime_dependency(%q<clip>, [">= 0", "= 1.0.0"])
-      s.add_runtime_dependency(%q<haml>, [">= 0", "= 2.0.0"])
-      s.add_runtime_dependency(%q<liquid>, [">= 0", "= 1.9.0"])
+      s.add_runtime_dependency(%q<haml>, [">= 0", "= 2.0.9"])
+      s.add_runtime_dependency(%q<liquid>, [">= 0", "= 2.0.0"])
       s.add_runtime_dependency(%q<danwrong-liquid-inheritance>, [">= 0", "= 0.1.1"])
+      s.add_runtime_dependency(%q<rack-cache>, [">= 0", "= 0.4"])
       s.add_development_dependency(%q<shoulda>, [">= 0"])
     else
       s.add_dependency(%q<sinatra>, [">= 0", "= 0.9.1.1"])
       s.add_dependency(%q<activerecord>, [">= 0", "= 2.3.2"])
       s.add_dependency(%q<sqlite3-ruby>, [">= 0", "= 1.2.1"])
       s.add_dependency(%q<clip>, [">= 0", "= 1.0.0"])
-      s.add_dependency(%q<haml>, [">= 0", "= 2.0.0"])
-      s.add_dependency(%q<liquid>, [">= 0", "= 1.9.0"])
+      s.add_dependency(%q<haml>, [">= 0", "= 2.0.9"])
+      s.add_dependency(%q<liquid>, [">= 0", "= 2.0.0"])
       s.add_dependency(%q<danwrong-liquid-inheritance>, [">= 0", "= 0.1.1"])
+      s.add_dependency(%q<rack-cache>, [">= 0", "= 0.4"])
       s.add_dependency(%q<shoulda>, [">= 0"])
     end
   else
@@ -50,9 +52,10 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<activerecord>, [">= 0", "= 2.3.2"])
     s.add_dependency(%q<sqlite3-ruby>, [">= 0", "= 1.2.1"])
     s.add_dependency(%q<clip>, [">= 0", "= 1.0.0"])
-    s.add_dependency(%q<haml>, [">= 0", "= 2.0.0"])
-    s.add_dependency(%q<liquid>, [">= 0", "= 1.9.0"])
+    s.add_dependency(%q<haml>, [">= 0", "= 2.0.9"])
+    s.add_dependency(%q<liquid>, [">= 0", "= 2.0.0"])
     s.add_dependency(%q<danwrong-liquid-inheritance>, [">= 0", "= 0.1.1"])
+    s.add_dependency(%q<rack-cache>, [">= 0", "= 0.4"])
     s.add_dependency(%q<shoulda>, [">= 0"])
   end
 end
