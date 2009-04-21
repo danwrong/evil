@@ -50,7 +50,7 @@ module Evil
     protected
     
     def initialize_plugins
-      Plugin::Environment.plugins.each { |p| p.init }
+      Plugin::Environment.plugins.each { |p| p.init } rescue nil
     end
     
     def partial_name(template_path)

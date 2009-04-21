@@ -1,2 +1,4 @@
 pkg
 .DS_Store
+evil.db
+test/example
