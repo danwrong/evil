@@ -14,6 +14,7 @@ Echoe.new("evil") do |p|
   p.development_dependencies = ['shoulda']
   p.retain_gemspec = true
   p.ignore_pattern = ['test/example/**/*']
+  p.rcov_options = "--exclude 'gems/*'"
 end
 
 desc 'Move assets from text/example to assets'
