@@ -1,3 +1,5 @@
+require File.join(File.dirname(__FILE__), '../../test_helper')
+
 class BaseTest < Test::Unit::TestCase
   should 'initialize with a name and a block that recieves the new instance' do
     plugin = Evil::Plugin::Base.new 'Test Plugin' do |p|
