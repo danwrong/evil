@@ -4,6 +4,10 @@ Author: Dan Webb (dan@danwebb.net)
 
 Evil is a tool for very easily putting together sites that take advantage of data from around the web.  Grab your blog entries from an ATOM or RSS feed, your recent links from Delicious, your projects from Github or whatever.  If it's got an API you can use pull it in to Evil and twist it together with other data and make a site.  Evil does all the frustrating stuff like caching template processing and handling HTTP requests to APIs.
 
+It was inspired by "this blog post (and the site they built).":http://jontangerine.com/log/2008/04/an-ephemeral-site-denna-jones
+
+More and more we find the data we keep living in places all across the web but still need to collect them together to form a single site.  I wanted to make a system that makes doing this trivial.
+
 NB.  It's 'working' at the moment and has decent test coverage but it's still very bare bones so it's probably not worth using until it approaches 1.0.
 
 Here's an overview of how to use it:
