@@ -59,6 +59,8 @@ module Evil
         Evil::Models::Template.find(id).update_attribute :position, i
       end
       
+      self.class.reload!
+      
       order.join(',')
     end
 

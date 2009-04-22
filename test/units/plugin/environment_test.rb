@@ -4,6 +4,10 @@ class EnvironmentTest < Test::Unit::TestCase
   include Evil::Plugin
   
   should 'take a name and block and add to plugins array' do
+    Environment.instance_eval do
+      @plugins = []
+    end
+    
     Environment.plugin :test do
     end
     
