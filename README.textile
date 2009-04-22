@@ -2,19 +2,57 @@ h1. EVIL
 
 Author: Dan Webb (dan@danwebb.net)
 
-Evil is going to be a quick and easy tool for bringing together data from all over the web into a cunning little website.  It's going to be easy to set up, easy to extend with plugins using any web API and be a good citzen in the Ruby web dev world by being a standard Rack app that you can deploy with Passenger, on Heroku or whatever you feel like. Hopefully it'll be mountable as part of a Rails or Merb app.
+Evil is a tool for very easily putting together sites that take advantage of data from around the web.  Grab your blog entries from an ATOM or RSS feed, your recent links from Delicious, your projects from Github or whatever.  If it's got an API you can use pull it in to Evil and twist it together with other data and make a site.  Evil does all the frustrating stuff like caching template processing and handling HTTP requests to APIs.
 
-To create an Evil site:
+NB.  It's 'working' at the moment and has decent test coverage but it's still very bare bones so it's probably not worth using until it approaches 1.0.
 
-<pre><code>sudo gem install evil
+Here's an overview of how to use it:
 
-evil init {your_app_root}
-evil whitelist {your_openid}</pre></code>
+1. Install the gem
 
-Then point Passenger at it, send it up to Heruko or run it on your grandad's ZX Spectrum then go to /admin and get going.
+@sudo gem install danwrong-evil@
 
-h2. Planned features
+2. Generate a site skeleton
 
-  * Caching via Rack::Cache
-  * Plugin architecture that makes it easy to interact with web APIs (probably based on HTTParty)
-  * Simple OpenID whitelist for access to the admin interface
+@evil init {path}@
+
+This will give you the files and dirs that you need for your site including a public directory to add static files to if you need them.
+
+3. Whitelist your OpenID
+
+<code><pre>cd {path}
+evil whitelist {your OpenID URL}</pre></code>
+
+You can use wildcards in here if you want so if you wanted to let in all subdomains of danwebb.net you could do *.danwebb.net.
+
+4. Upload the whole directory to your server and point passenger at it.  Something like this in your Apache config should do it:
+
+<code><pre><VirtualHost *:80>
+  ServerName www.example.com
+  DocumentRoot "/var/www/example/public"
+</VirtualHost></pre></code>
+
+5. Go to the admin site and start writing templates.  It will be at /admin.  Just log in with your OpenID.
+
+6.  Mess around.  Create templates using liquid syntax, give them routes using the Sinatra/Rails syntax eg. /mythings/:id.  
+
+That's all for now.  More detail later.
+
+h2. Acknowledgements
+
+Evil is built, as all good software is, on the efforts of lots of brilliant projects:
+
+* Sinatra
+* Rack::Cache
+* Liquid
+* HTTParty
+* jQuery
+* HAML
+
+So thanks to all the authors.
+
+h2. In the works...
+
+There will be a suite of built in plugins covering all of the popular services and protocols (Flickr, Twitter, ATOM/RSS, Github, Upcoming, Delicious, YQL, Last.fm + loads more).  Also, I'll be adding documentation to write your own plugins and easy handling of OAuth.  This is just the very start.
+
+Feedback welcome.

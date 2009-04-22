@@ -13,7 +13,7 @@ Echoe.new("evil") do |p|
                             
   p.development_dependencies = ['shoulda']
   p.retain_gemspec = true
-  p.ignore_pattern = ['test/example/**/*']
+  p.ignore_pattern = ['test/example/**/*', 'test/evil.db']
   p.rcov_options = "--exclude 'gems/*'"
 end
 
