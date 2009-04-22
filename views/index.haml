@@ -1,5 +1,5 @@
 #overview
-  %table#template-overview
+  %table#templates
     %thead
       %tr.title
         %th{ :colspan => 3 } Templates
@@ -10,7 +10,7 @@
         %th 
     %tbody
       - @templates.each_with_index do |template, i|
-        %tr{ :class => ('alt' if i % 2 == 1) }
+        %tr{ :class => ('alt' if i % 2 == 1), :id => "#{template.id}t" }
           %td= template.title
           %td= template.route
           %td= template.route.empty? ? 'N/A' : template.ttl

@@ -10,7 +10,6 @@ module Evil
     end
 
     require_whitelisted_openid(/^\/admin/)
-    load_template_routes
 
     get '/admin/openid/login' do
       attempt_openid_authentication do |identity_url|
@@ -46,6 +45,21 @@ module Evil
       else
         haml :"templates/new"
       end
+    end
+    
+    post '/admin/templates/reorder' do
+      order = params[:templates].collect do |id|
+        if id =~ /(\d)+t/
+          $1.to_i
+        end
+      end.compact
+      
+      
+      order.each_with_index do |id, i|
+        Evil::Models::Template.find(id).update_attribute :position, i
+      end
+      
+      order.join(',')
     end
 
     get '/admin/templates/:id' do
@@ -84,6 +98,8 @@ module Evil
       
       redirect '/admin'
     end
+    
+    load_template_routes
   end
 end
       

@@ -2,9 +2,9 @@ require File.join(File.dirname(__FILE__), '../../test_helper')
 require 'liquid'
 
 class TagTest < Test::Unit::TestCase
-  context 'with a custom tag defined that returns a string' do
+  context 'with a custom block tag defined that returns a string' do
     setup do
-      Liquid::Template.register_tag('test', Evil::Plugin::Tag.from { |params|
+      Liquid::Template.register_tag('test', Evil::Plugin::BlockTag.from { |params|
         'hello'
       })
     end
@@ -18,7 +18,7 @@ class TagTest < Test::Unit::TestCase
   
   context 'with a custom tag defined that returns a parameter' do
     setup do
-      Liquid::Template.register_tag('test', Evil::Plugin::Tag.from { |params|
+      Liquid::Template.register_tag('test', Evil::Plugin::BlockTag.from { |params|
         params[:a]
       })
     end
@@ -38,7 +38,7 @@ class TagTest < Test::Unit::TestCase
   
   context 'with a custom tag defined that uses the body method' do
     setup do
-      Liquid::Template.register_tag('test', Evil::Plugin::Tag.from { |params|
+      Liquid::Template.register_tag('test', Evil::Plugin::BlockTag.from { |params|
         times = params[:times] || 1
         out = ''
         times.times { |i| out << body(:i => i) }
@@ -67,14 +67,14 @@ class TagTest < Test::Unit::TestCase
   
   context 'with 2 custom tags defined' do
     setup do
-      Liquid::Template.register_tag('test', Evil::Plugin::Tag.from { |params|
+      Liquid::Template.register_tag('test', Evil::Plugin::BlockTag.from { |params|
         times = params[:times] || 1
         out = ''
         times.times { |i| out << body(:i => i) }
         out
       })
       
-      Liquid::Template.register_tag('test2', Evil::Plugin::Tag.from { |params|
+      Liquid::Template.register_tag('test2', Evil::Plugin::BlockTag.from { |params|
         params[:a]
       })
     end
@@ -94,7 +94,7 @@ class TagTest < Test::Unit::TestCase
   
   context 'with a custom tag with more than one parameter defined' do
     setup do
-      Liquid::Template.register_tag('test', Evil::Plugin::Tag.from { |params|
+      Liquid::Template.register_tag('test', Evil::Plugin::BlockTag.from { |params|
         [params[:a], params[:b]].join('|')
       })
     end
@@ -103,6 +103,35 @@ class TagTest < Test::Unit::TestCase
       template = Liquid::Template.parse("{% test a: 'g', b: 'a' %}{% endtest %}")
       
       assert_equal 'g|a', template.render
+    end
+  end
+  
+  
+  context 'with a custom singleton tag defined that returns a string' do
+    setup do
+      Liquid::Template.register_tag('tests', Evil::Plugin::SingletonTag.from { |params|
+        'hello'
+      })
+    end
+    
+    should 'output the string' do
+      template = Liquid::Template.parse('{% tests %}')
+
+      assert_equal 'hello', template.render
+    end
+  end
+  
+  context 'with a custom singleton tag defined that uses a parameter' do
+    setup do
+      Liquid::Template.register_tag('tests', Evil::Plugin::SingletonTag.from { |params|
+        params[:thing]
+      })
+    end
+    
+    should 'output the parameter' do
+      template = Liquid::Template.parse('{% tests thing: "boo" %}')
+
+      assert_equal 'boo', template.render
     end
   end
 end

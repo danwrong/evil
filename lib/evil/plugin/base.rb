@@ -22,8 +22,8 @@ module Evil
         @setup_proc = block
       end
                   
-      def tag(name, &block)
-        tag = Tag.from(&block)
+      def tag(name, options={}, &block)
+        tag = options[:block] ? BlockTag.from(&block) : SingletonTag.from(&block)
         Liquid::Template.register_tag(name, tag)
       end
       

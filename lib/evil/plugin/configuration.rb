@@ -49,8 +49,8 @@ module Evil
         
         def set(values)
           values.each do |k, v|
-            c = ConfigPair.find_or_create_by_plugin_and_key(@plugin.name, k)
-            c.update_attribute :value, v
+            c = ConfigPair.find_or_create_by_plugin_and_key(@plugin.name, k.to_s)
+            c.update_attribute :value, v.to_s
           end if values
           
           load_config!
@@ -61,12 +61,8 @@ module Evil
         def load_config!
           pairs = Evil::Models::ConfigPair.find_all_by_plugin(@plugin.name)
           
-          if pairs
-            @values = pairs.inject(Hash.new('')) do |m, pair|
-              m[pair.key.to_sym] = pair.value; m
-            end
-          else
-            @values = Hash.new('')
+          @values = pairs.inject(Hash.new('')) do |m, pair|
+            m[pair.key.to_sym] = pair.value; m
           end
         end
       

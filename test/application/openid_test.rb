@@ -21,6 +21,7 @@ class OpenidTest < Test::Unit::TestCase
             assert_match /openid_url/, response.body
           end
         end
+        
       end
         
     

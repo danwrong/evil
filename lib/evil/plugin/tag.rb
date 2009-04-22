@@ -1,56 +1,32 @@
 module Evil
   module Plugin
-    
-    class TagExecution
+    module Tag
+      Syntax = /((#{Liquid::TagAttributes}\s?,?\s?)*)/
       
-      def initialize(tag, options, context, &block)
-        @options = evaluate(options, context)
-        @context = context
-        @tag = tag
-        @proc = block
-      end
-      
-      def body(locals={})
-        @context.stack do
-          locals.each { |k, v| @context[k.to_s] = v }
-          return @tag.render_body(@context).to_s
+      def self.included(base)
+        base.instance_eval do
+          def from(&block)
+            tag = Class.new(self)
+            
+            class << tag
+              attr_accessor :tag_proc
+            end
+            
+            tag.tag_proc = block; tag
+          end
         end
       end
       
-      def execute
-        self.instance_exec(@options, &@proc)
-      end
-      
-      def to_s
-        execute.to_s
-      end
-      
-      private
-      
-      def evaluate(options, context)
+      def self.evaluate(options, context)
         options.inject({}) do |evaluated, pair| 
           opt, value = pair
           evaluated[opt] = context[value]; evaluated
         end
       end
-    end
-    
-    class Tag < Liquid::Block
-      Syntax = /((#{Liquid::TagAttributes}\s?,?\s?)*)/
       
-      class << self
-        attr_accessor :tag_proc
-        attr_accessor :plugin
-        
-        def from(&block)
-          tag = Class.new(self)
-          tag.tag_proc = block; tag
-        end
-      end
-
-      def initialize(tag_name, markup, tokens)
-        super
-        
+      protected
+      
+      def set_options(markup)
         if markup =~ Syntax
           @options = parse_options($1)
         else
@@ -58,16 +34,6 @@ module Evil
         end
       end
       
-      def render(context)
-        TagExecution.new(self, @options, context, &self.class.tag_proc).to_s
-      end
-      
-      def render_body(context)
-        render_all(@nodelist, context)
-      end
-
-      private
-
       def parse_options(opt_string)
         pairs = opt_string.split(',')
         pairs.inject({}) do |opts, pair|
@@ -75,7 +41,7 @@ module Evil
           opts[opt.strip.to_sym] = value.strip; opts
         end
       end
+      
     end
-    
   end
 end

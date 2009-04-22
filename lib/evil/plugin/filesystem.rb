@@ -7,7 +7,7 @@ module Evil
         if template = Evil::Models::Template.find_by_title(title)
           template.source
         else
-          raise FileSystemError, "No such template '#{title}'"
+          raise Liquid::FileSystemError, "No such template '#{title}'"
         end
       end
       

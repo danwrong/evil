@@ -29,3 +29,9 @@ Factory.define :template, :class => Evil::Models::Template do |f|
   f.route { "/test#{Factory.next(:number)}/thing" }
   f.source 'some stuff'
 end
+
+Factory.define :config_pair, :class => Evil::Models::ConfigPair do |f|
+  f.plugin 'Test'
+  f.key { "test#{Factory.next(:number)}" }
+  f.value 'test'
+end
